@@ -1,0 +1,21 @@
+Package: lodes
+Type: Package
+Title:  Retrieve Data from LEHD Origin-Destination Employment Statistics Server
+Version: 0.1.0
+Date: 2017-01-19
+Author: Bob Rudis (bob@@rud.is)
+Maintainer: Bob Rudis <bob@rud.is>
+Description:  Retrieve Data from LEHD Origin-Destination Employment Statistics Server
+URL: http://github.com/hrbrmstr/lodes
+BugReports: https://github.com/hrbrmstr/lodes/issues
+License: AGPL
+Suggests:
+    testthat
+Depends:
+    R (>= 3.2.0)
+Imports:
+    purrr,
+    httr,
+    curl,
+    readr
+RoxygenNote: 5.0.1

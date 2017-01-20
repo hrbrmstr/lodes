@@ -1,0 +1,61 @@
+---
+output: rmarkdown::github_document
+---
+
+`lodes` :  Retrieve Data from LEHD Origin-Destination Employment Statistics Server
+
+The following functions are implemented:
+
+- `read_lodes`:	Retrieve a LODES file/data
+- `read_xwalk`:	Retrieve geography crosswalk for a state
+
+Both functions take a `download_dir` parameter and local copies of the remote files
+will be cached to that directory and read from vs re-downloading (be kind to servers).
+Remove the file if you want a fresh version.
+
+### Installation
+
+```{r eval=FALSE}
+devtools::install_git("https://github.com/hrbrmstr/lodes.git")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+options(width=120)
+```
+
+### Usage
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(lodes)
+library(dplyr)
+
+# current verison
+packageVersion("lodes")
+
+# Grab a crosswalk file
+id_xwalk <- read_xwalk("id", "~/Data/lodes")
+
+glimpse(id_xwalk)
+
+# Some different params
+de <- read_lodes("de", "od", "aux", "JT00", "2006", "~/Data/lodes")
+glimpse(de)
+
+ak <- read_lodes("ak", "residence", "S000", "JT00", "2002", "~/Data/lodes")
+glimpse(ak)
+
+id <- read_lodes("id", "workplace", "SE02", "JT03", "2013", "~/Data/lodes")
+glimpse(id)
+```
+
+### Test Results
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(lodes)
+library(testthat)
+
+date()
+
+test_dir("tests/")
+```
+
